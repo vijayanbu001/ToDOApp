@@ -1,3 +1,11 @@
+import {
+    SHOW_TODO,
+    ADD_TODO,
+    UPDATE_TODO,
+    DELETE_TODO,
+    REMOVE_TODO,
+    RESTORE_TODO
+} from '../types';
 
 const initialState = {
     todoList: [
@@ -26,37 +34,37 @@ const initialState = {
 const todo = (state = initialState, action) => {
     let { todoList, completedToDoList } = state
     switch (action.type) {
-        case "SHOW_TODO":
+        case SHOW_TODO:
             return {
                 ...state
             }
-        case "ADD_TODO":
+        case ADD_TODO:
 
             return {
                 ...state,
                 todoList: [...todoList, { id: todoList.length + 1, name: action.payload, completed: false }]
             }
-        case "DELETE_TODO":
+        case DELETE_TODO:
             var commontodo = [...todoList].map(({ id, name, completed }) => id === action.payload.id ? { ...action.payload, completed: true } : { id, name, completed });
             return {
                 ...state,
                 todoList: commontodo,
                 completedToDoList: commontodo.filter(({ completed }) => completed)
             }
-        case "REMOVE_TODO":
+        case REMOVE_TODO:
             return {
                 ...state,
                 todoList: [...todoList].filter(({ id }) => id !== action.payload.id),
                 completedToDoList: [...completedToDoList.filter(({ id }) => id !== action.payload.id)]
             }
-        case "UPDATE_TODO":
+        case UPDATE_TODO:
             var todo = [...todoList].map(({ id, name, completed }) => id === action.payload.id ? { ...action.payload, completed: false } : { id, name, completed })
             return {
                 ...state,
                 todoList: [...todo],
                 completedToDoList: todo.filter(({ completed }) => completed),
             }
-        case "RESTORE_TODO":
+        case RESTORE_TODO:
             var restoreTodo = [...todoList].map(({ id, name, completed }) => id === action.payload.id ? { ...action.payload, completed: false } : { id, name, completed })
             return {
                 ...state,
