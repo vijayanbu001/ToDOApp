@@ -20,7 +20,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ToDoPage)
+export default connect(mapStateToProps, mapDispatchToProps)(ToDoPage)
