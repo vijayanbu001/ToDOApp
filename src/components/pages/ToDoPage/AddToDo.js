@@ -7,7 +7,7 @@ class AddToDo extends Component {
         newToDo:''
     }
     handleClick = () => {
-        this.props.onClick && this.state.newToDo && this.props.onClick(this.state.newToDo);
+        this.props.onClick && this.state.newToDo.trim() && this.props.onClick(this.state.newToDo);
         this.setState({newToDo:''})
 
     }
