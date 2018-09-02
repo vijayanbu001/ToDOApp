@@ -14,5 +14,3 @@ Screenshot:
 
 ## Bonus
 * Unit test with any framework
-
-Don't worry too much about the aesthetics, should be legible that's it!
